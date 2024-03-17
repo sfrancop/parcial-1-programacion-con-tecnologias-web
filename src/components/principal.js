@@ -31,7 +31,7 @@ function Principal(props) {
       try {
         const newImages = [];
         for (let i = 0; i < 12; i++) {
-          const response = await fetch(`https://picsum.photos/350`);
+          const response = await fetch(`https://picsum.photos/800`);
           const data = await response;
           newImages.push(data.url);
         }
@@ -41,7 +41,7 @@ function Principal(props) {
       }
     };
 
-    //fetchImages();
+    fetchImages();
 
 
   }, []);
@@ -51,13 +51,13 @@ function Principal(props) {
 
       <section className="row wrapper">
         <Link to={"/perfil"} className="col-sm-4">
-        <img className="info-container__picture" src={dataApi.picture} alt="profile-picture" /></Link>
+          <img className="info-container__picture" src={dataApi.picture} alt="profile-picture" /></Link>
         <div className="col-sm-8 info-container__description-container">
           <h1>{dataApi.username}</h1>
           <p><b>{dataApi.fisrstName} {dataApi.lastName}</b></p>
           <p>{dataApi.description}</p>
           <a href={dataApi.link} target="_blanck">{dataApi.link}</a>
-          <div style={{marginTop: "30px"}} className="row">
+          <div style={{ marginTop: "30px" }} className="row">
             <p className="col-sm"><b>{dataApi.posts}</b> posts </p>
             <p className="col-sm"><b>{dataApi.followers}</b> followers </p>
             <p className="col-sm"><b>{dataApi.following}</b> following </p>
@@ -72,8 +72,10 @@ function Principal(props) {
             {images.map((image, index) => {
               return (
                 <Col key={index} xs={12} sm={6} md={4}>
-                  <img src={image} className="img-fluid mb-3" />
-                  </Col>
+                  <button type="button" class="btn" data-bs-toggle="modal" data-bs-target={`#picture${index}`}>
+                    <img src={image} className="img-fluid mb-3" />
+                  </button>
+                </Col>
               );
             })}
           </div>
@@ -82,6 +84,27 @@ function Principal(props) {
         )}
       </section>
 
+      <section>
+        {images.map((image, index) => {
+          return (
+            <div key={index} class="modal modal-xl fade" id={`picture${index}`} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <img style={{ width: "100%" }} src={image}></img>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </section>
 
     </div>
   );
