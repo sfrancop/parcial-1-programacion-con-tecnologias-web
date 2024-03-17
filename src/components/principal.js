@@ -11,29 +11,35 @@ function Principal(props) {
 
   const fetchUser = () => {
     const URL1 =
-    "https://raw.githubusercontent.com/sfrancop/parcial-1-programacion-con-tecnologias-web/main/src/data.json";
-  fetch(URL1)
-    .then((data) => data.json())
-    .then((data) => {
-      setDataApi(data[0]);
-    });
+      "https://raw.githubusercontent.com/sfrancop/parcial-1-programacion-con-tecnologias-web/main/src/data.json";
+    fetch(URL1)
+      .then((data) => data.json())
+      .then((data) => {
+        setDataApi(data[0]);
+      });
   }
 
-  const fetchImages = () => {
-    const URL2 =
-    "https://picsum.photos/350";
-      fetch(URL2)
-        .then((data) => {
-          setImages(images.push(data.url));
-        });
-  }
+
 
 
   useEffect(() => {
     fetchUser();
-    for(let i = 0; i < 12; i++){
-      fetchImages();
-    }
+
+    const fetchImages = async () => {
+      try {
+        const newImages = [];
+        for (let i = 0; i < 12; i++) {
+          const response = await fetch(`https://picsum.photos/350`);
+          const data = await response;
+          newImages.push(data.url);
+        }
+        setImages(newImages);
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
+
+    fetchImages();
 
 
   }, []);
@@ -52,15 +58,19 @@ function Principal(props) {
 
       <section className="gallery-container">
         <h2>Gallery</h2>
-        <Row>
-          {images.map((image, index) => {
-            return (
-              <Col key={index} xs={12} md={4}>
-                <img src={image}/>
-              </Col>
-            );
-          })}
-        </Row>
+        {images.length === 12 ? (
+          <Row>
+            {images.map((image, index) => {
+              return (
+                <Col key={index} xs={12} md={4}>
+                  <img src={image} />
+                </Col>
+              );
+            })}
+          </Row>
+        ) : (
+          <p>Loading images...</p>
+        )}
       </section>
 
 
