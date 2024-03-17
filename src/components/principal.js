@@ -3,6 +3,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Formulario from "./formulario";
 import { useEffect, useState } from "react";
+import '../styles/principal.css';
+import { Link } from "react-router-dom";
 
 function Principal(props) {
 
@@ -39,7 +41,7 @@ function Principal(props) {
       }
     };
 
-    fetchImages();
+    //fetchImages();
 
 
   }, []);
@@ -47,27 +49,34 @@ function Principal(props) {
   return (
     <div className="container">
 
-      <section className="info-container">
-        <img src="https://media.licdn.com/dms/image/D4E03AQGykjGV4y553w/profile-displayphoto-shrink_800_800/0/1703073087373?e=1715817600&v=beta&t=FMGOLhkl8n0cYYeDY9HkeBryidV2LIUknqPleLLiL3w" alt="profile-picture" width="300px" />
-        <div>
+      <section className="row wrapper">
+        <Link to={"/perfil"} className="col-sm-4">
+        <img className="info-container__picture" src={dataApi.picture} alt="profile-picture" /></Link>
+        <div className="col-sm-8 info-container__description-container">
           <h1>{dataApi.username}</h1>
           <p><b>{dataApi.fisrstName} {dataApi.lastName}</b></p>
           <p>{dataApi.description}</p>
+          <a href={dataApi.link} target="_blanck">{dataApi.link}</a>
+          <div style={{marginTop: "30px"}} className="row">
+            <p className="col-sm"><b>{dataApi.posts}</b> posts </p>
+            <p className="col-sm"><b>{dataApi.followers}</b> followers </p>
+            <p className="col-sm"><b>{dataApi.following}</b> following </p>
+          </div>
         </div>
+
       </section>
 
       <section className="gallery-container">
-        <h2>Gallery</h2>
         {images.length === 12 ? (
-          <Row>
+          <div className="row row-cols-1 row-cols-md-3 row-cols-lg-4">
             {images.map((image, index) => {
               return (
-                <Col key={index} xs={12} md={4}>
-                  <img src={image} />
-                </Col>
+                <Col key={index} xs={12} sm={6} md={4}>
+                  <img src={image} className="img-fluid mb-3" />
+                  </Col>
               );
             })}
-          </Row>
+          </div>
         ) : (
           <p>Loading images...</p>
         )}

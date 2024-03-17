@@ -25,7 +25,7 @@ function App() {
      <BrowserRouter>
        <Routes>
          <Route path="/" element={<Principal data={dataApi} />}/>
-         <Route path="/:itemId" element={<Detail data={dataApi} />} />
+         <Route path="/perfil" element={<Detail data={dataApi} />} />
        </Routes>
      </BrowserRouter>
    </div>

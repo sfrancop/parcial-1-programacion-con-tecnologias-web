@@ -4,9 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 function NavBar() {
  return (
    <>
-     <Navbar bg="dark" variant="dark">
+     <Navbar style={{marginBottom: "30px"}} bg="dark" variant="dark">
        <Container>
-         <Navbar.Brand href="/">Nombre de la aplicación</Navbar.Brand>
+         <Navbar.Brand href="/">Webstagram</Navbar.Brand>
        </Container>
      </Navbar>
    </>
