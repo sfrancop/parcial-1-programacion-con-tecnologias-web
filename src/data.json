@@ -4,6 +4,9 @@
         "fisrstName": "Sergio",
         "lastName": "Franco",
         "description": "I'm a software developer and I love to code!",
-        "link": "https://www.linkedin.com/in/sergio-franco/"
+        "link": "https://www.linkedin.com/in/sergio-franco/",
+        "posts": 12,
+        "followers": 100,
+        "following": 50
     }
 ]
