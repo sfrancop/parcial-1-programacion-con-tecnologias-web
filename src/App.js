@@ -24,7 +24,7 @@ function App() {
      <NavBar></NavBar>
      <BrowserRouter>
        <Routes>
-         <Route path="/" element={<Principal data={dataApi} />}/>
+         <Route path="/" element={<Principal />}/>
          <Route path="/perfil" element={<Detail data={dataApi} />} />
        </Routes>
      </BrowserRouter>
