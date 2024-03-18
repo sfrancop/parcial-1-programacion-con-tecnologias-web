@@ -59,6 +59,8 @@ En conclusión, tenemos dos rutas para la aplicación, una de la pagina principa
 
 Se pensó en los elementos que hay que tener en cuenta al cambiar de idioma, en este caso tenemos español e inglés, y se concluyó que para el alcance del MVP lo único a tener en cuenta para esta internacionalización es la traducción.
 
+Técnicamente, la manera de internacionalizar se basa basicamente en definir un mapa que tenga las palabras en inglés y español, luego identificar el lenguaje en el que se encuentra el navegador del cliente y  de esta manera llamar al diccionario del lenguaje que le corresponde. Este diccionario está definido en el archivo `src/i18n.js`.
+
 ### Herramientas y librerias
 
 - Bootstrap y CSS nativo para los estilos
