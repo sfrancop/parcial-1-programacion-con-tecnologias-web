@@ -25,7 +25,7 @@ i18n
           "userName": "User Name",
           "fullNamme": "Full Name",
           "profileDescription": "Profile Description",
-          "url": "personal blog URL",
+          "url": "Personal blog URL",
           "saveChanges": "Save Changes"
         }
       },

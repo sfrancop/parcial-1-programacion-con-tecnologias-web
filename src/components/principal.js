@@ -2,7 +2,6 @@ import Col from "react-bootstrap/Col";
 import { useEffect, useState } from "react";
 import '../styles/principal.css';
 import ProfileHeader from "./profile-header";
-import ImageModal from "./image-modal";
 import ClickableImage from "./clickable-image";
 
 export default function Principal() {
