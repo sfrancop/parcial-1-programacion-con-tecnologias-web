@@ -1,12 +1,13 @@
-import Item from "./item";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Formulario from "./formulario";
 import { useEffect, useState } from "react";
 import '../styles/principal.css';
 import { Link } from "react-router-dom";
 
-function Principal(props) {
+import { useTranslation } from "react-i18next";
+
+function Principal() {
+
+  const { t, i18n } = useTranslation();
 
   const [dataApi, setDataApi] = useState({});
   const [images, setImages] = useState([]);
@@ -43,6 +44,9 @@ function Principal(props) {
 
     fetchImages();
 
+    const lng = navigator.language;
+    i18n.changeLanguage(lng);
+
 
   }, []);
 
@@ -58,9 +62,9 @@ function Principal(props) {
           <p>{dataApi.description}</p>
           <a href={dataApi.link} target="_blanck">{dataApi.link}</a>
           <div style={{ marginTop: "30px" }} className="row">
-            <p className="col-sm"><b>{dataApi.posts}</b> posts </p>
-            <p className="col-sm"><b>{dataApi.followers}</b> followers </p>
-            <p className="col-sm"><b>{dataApi.following}</b> following </p>
+            <p className="col-sm"><b>{dataApi.posts}</b> {t('posts')} </p>
+            <p className="col-sm"><b>{dataApi.followers}</b> {t('followers')} </p>
+            <p className="col-sm"><b>{dataApi.following}</b> {t('following')} </p>
           </div>
         </div>
 

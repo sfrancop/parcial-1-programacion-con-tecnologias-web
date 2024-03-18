@@ -19,7 +19,26 @@ i18n
     resources: {
       en: {
         translation: {
-          // here we will place our translations...
+          "posts": "post",
+          "followers": "followers",
+          "following": "following",
+          "userName": "User Name",
+          "fullNamme": "Full Name",
+          "profileDescription": "Profile Description",
+          "url": "personal blog URL",
+          "saveChanges": "Save Changes"
+        }
+      },
+      es: {
+        translation: {
+          "posts": "publicaciones",
+          "followers": "seguidores",
+          "following": "seguidos",
+          "userName": "Nombre de usuario",
+          "fullNamme": "Nombre completo",
+          "profileDescription": "Descripción de perfil",
+          "url": "URL de blog personal",
+          "saveChanges": "Guardar Cambios"
         }
       }
     }
